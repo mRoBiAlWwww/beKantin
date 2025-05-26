@@ -154,9 +154,9 @@ app.post("/products", upload.single("image"), async (req, res) => {
         const product = await prisma.produk.create({
             data: {
                 nama,
-                harga,
                 jenis,
-                stock,
+                harga: parseInt(harga),
+                stock: parseInt(stock),
                 gambarUrl: result.secure_url,
                 penjualId: "aa",
             },
