@@ -56,7 +56,7 @@ model Produk {
   harga         Int
   jenis         String
   stock         Int
-  gambarUrl     String
+  gambarUrl     String?
   penjualId     String
   penjual       Penjual         @relation(fields: [penjualId], references: [id])
   pesananProduk PesananProduk[]
