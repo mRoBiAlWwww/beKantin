@@ -138,7 +138,11 @@ app.post("/products", upload.single("image"), async (req, res) => {
         if (!req.file) {
             return res.status(400).json({ error: "No image file uploaded" });
         }
-        const result = await streamUpload(req.file.buffer);
+        console.log("🚀 Mulai upload ke Cloudinary");
+
+        const result = await streamUpload(req.file.buffer); // jika pakai memoryStorage
+
+        console.log("✅ Upload Cloudinary berhasil:", result);
         // const result = await cloudinary.uploader.upload(req.file.path);
 
         const product = await prisma.produk.create({
