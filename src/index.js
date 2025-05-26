@@ -154,10 +154,13 @@ app.post("/user", async (req, res) => {
     const { id, username } = req.body;
 
     try {
-        const existing = await prisma.pembeli.findUnique({
+        const existingUser = await prisma.pembeli.findUnique({
             where: { id },
         });
-        if (existing) {
+        const existingAdmin = await prisma.penjual.findUnique({
+            where: { id },
+        });
+        if (existingUser || existingAdmin) {
             return res.json({ message: "Profil sudah ada" }); // bisa di improve lagi
         }
 
@@ -179,10 +182,13 @@ app.post("/admin", async (req, res) => {
     const { id, username } = req.body;
 
     try {
-        const existing = await prisma.penjual.findUnique({
+        const existingUser = await prisma.pembeli.findUnique({
             where: { id },
         });
-        if (existing) {
+        const existingAdmin = await prisma.penjual.findUnique({
+            where: { id },
+        });
+        if (existingUser || existingAdmin) {
             return res.json({ message: "Profil sudah ada" }); // bisa di improve lagi
         }
 
