@@ -7018,50 +7018,60 @@ export namespace Prisma {
 
   export type PesananProdukAvgAggregateOutputType = {
     produkId: number | null
+    jumlahProduk: number | null
   }
 
   export type PesananProdukSumAggregateOutputType = {
     produkId: number | null
+    jumlahProduk: number | null
   }
 
   export type PesananProdukMinAggregateOutputType = {
     pesananId: string | null
     produkId: number | null
+    jumlahProduk: number | null
   }
 
   export type PesananProdukMaxAggregateOutputType = {
     pesananId: string | null
     produkId: number | null
+    jumlahProduk: number | null
   }
 
   export type PesananProdukCountAggregateOutputType = {
     pesananId: number
     produkId: number
+    jumlahProduk: number
     _all: number
   }
 
 
   export type PesananProdukAvgAggregateInputType = {
     produkId?: true
+    jumlahProduk?: true
   }
 
   export type PesananProdukSumAggregateInputType = {
     produkId?: true
+    jumlahProduk?: true
   }
 
   export type PesananProdukMinAggregateInputType = {
     pesananId?: true
     produkId?: true
+    jumlahProduk?: true
   }
 
   export type PesananProdukMaxAggregateInputType = {
     pesananId?: true
     produkId?: true
+    jumlahProduk?: true
   }
 
   export type PesananProdukCountAggregateInputType = {
     pesananId?: true
     produkId?: true
+    jumlahProduk?: true
     _all?: true
   }
 
@@ -7154,6 +7164,7 @@ export namespace Prisma {
   export type PesananProdukGroupByOutputType = {
     pesananId: string
     produkId: number
+    jumlahProduk: number
     _count: PesananProdukCountAggregateOutputType | null
     _avg: PesananProdukAvgAggregateOutputType | null
     _sum: PesananProdukSumAggregateOutputType | null
@@ -7178,6 +7189,7 @@ export namespace Prisma {
   export type PesananProdukSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     pesananId?: boolean
     produkId?: boolean
+    jumlahProduk?: boolean
     pesanan?: boolean | PesananDefaultArgs<ExtArgs>
     produk?: boolean | ProdukDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["pesananProduk"]>
@@ -7185,6 +7197,7 @@ export namespace Prisma {
   export type PesananProdukSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     pesananId?: boolean
     produkId?: boolean
+    jumlahProduk?: boolean
     pesanan?: boolean | PesananDefaultArgs<ExtArgs>
     produk?: boolean | ProdukDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["pesananProduk"]>
@@ -7192,6 +7205,7 @@ export namespace Prisma {
   export type PesananProdukSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     pesananId?: boolean
     produkId?: boolean
+    jumlahProduk?: boolean
     pesanan?: boolean | PesananDefaultArgs<ExtArgs>
     produk?: boolean | ProdukDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["pesananProduk"]>
@@ -7199,9 +7213,10 @@ export namespace Prisma {
   export type PesananProdukSelectScalar = {
     pesananId?: boolean
     produkId?: boolean
+    jumlahProduk?: boolean
   }
 
-  export type PesananProdukOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"pesananId" | "produkId", ExtArgs["result"]["pesananProduk"]>
+  export type PesananProdukOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"pesananId" | "produkId" | "jumlahProduk", ExtArgs["result"]["pesananProduk"]>
   export type PesananProdukInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     pesanan?: boolean | PesananDefaultArgs<ExtArgs>
     produk?: boolean | ProdukDefaultArgs<ExtArgs>
@@ -7224,6 +7239,7 @@ export namespace Prisma {
     scalars: $Extensions.GetPayloadResult<{
       pesananId: string
       produkId: number
+      jumlahProduk: number
     }, ExtArgs["result"]["pesananProduk"]>
     composites: {}
   }
@@ -7651,6 +7667,7 @@ export namespace Prisma {
   interface PesananProdukFieldRefs {
     readonly pesananId: FieldRef<"PesananProduk", 'String'>
     readonly produkId: FieldRef<"PesananProduk", 'Int'>
+    readonly jumlahProduk: FieldRef<"PesananProduk", 'Int'>
   }
     
 
@@ -8135,7 +8152,8 @@ export namespace Prisma {
 
   export const PesananProdukScalarFieldEnum: {
     pesananId: 'pesananId',
-    produkId: 'produkId'
+    produkId: 'produkId',
+    jumlahProduk: 'jumlahProduk'
   };
 
   export type PesananProdukScalarFieldEnum = (typeof PesananProdukScalarFieldEnum)[keyof typeof PesananProdukScalarFieldEnum]
@@ -8533,6 +8551,7 @@ export namespace Prisma {
     NOT?: PesananProdukWhereInput | PesananProdukWhereInput[]
     pesananId?: StringFilter<"PesananProduk"> | string
     produkId?: IntFilter<"PesananProduk"> | number
+    jumlahProduk?: IntFilter<"PesananProduk"> | number
     pesanan?: XOR<PesananScalarRelationFilter, PesananWhereInput>
     produk?: XOR<ProdukScalarRelationFilter, ProdukWhereInput>
   }
@@ -8540,6 +8559,7 @@ export namespace Prisma {
   export type PesananProdukOrderByWithRelationInput = {
     pesananId?: SortOrder
     produkId?: SortOrder
+    jumlahProduk?: SortOrder
     pesanan?: PesananOrderByWithRelationInput
     produk?: ProdukOrderByWithRelationInput
   }
@@ -8551,6 +8571,7 @@ export namespace Prisma {
     NOT?: PesananProdukWhereInput | PesananProdukWhereInput[]
     pesananId?: StringFilter<"PesananProduk"> | string
     produkId?: IntFilter<"PesananProduk"> | number
+    jumlahProduk?: IntFilter<"PesananProduk"> | number
     pesanan?: XOR<PesananScalarRelationFilter, PesananWhereInput>
     produk?: XOR<ProdukScalarRelationFilter, ProdukWhereInput>
   }, "pesananId_produkId">
@@ -8558,6 +8579,7 @@ export namespace Prisma {
   export type PesananProdukOrderByWithAggregationInput = {
     pesananId?: SortOrder
     produkId?: SortOrder
+    jumlahProduk?: SortOrder
     _count?: PesananProdukCountOrderByAggregateInput
     _avg?: PesananProdukAvgOrderByAggregateInput
     _max?: PesananProdukMaxOrderByAggregateInput
@@ -8571,6 +8593,7 @@ export namespace Prisma {
     NOT?: PesananProdukScalarWhereWithAggregatesInput | PesananProdukScalarWhereWithAggregatesInput[]
     pesananId?: StringWithAggregatesFilter<"PesananProduk"> | string
     produkId?: IntWithAggregatesFilter<"PesananProduk"> | number
+    jumlahProduk?: IntWithAggregatesFilter<"PesananProduk"> | number
   }
 
   export type PembeliCreateInput = {
@@ -8861,6 +8884,7 @@ export namespace Prisma {
   }
 
   export type PesananProdukCreateInput = {
+    jumlahProduk?: number
     pesanan: PesananCreateNestedOneWithoutPesananProdukInput
     produk: ProdukCreateNestedOneWithoutPesananProdukInput
   }
@@ -8868,9 +8892,11 @@ export namespace Prisma {
   export type PesananProdukUncheckedCreateInput = {
     pesananId: string
     produkId: number
+    jumlahProduk?: number
   }
 
   export type PesananProdukUpdateInput = {
+    jumlahProduk?: IntFieldUpdateOperationsInput | number
     pesanan?: PesananUpdateOneRequiredWithoutPesananProdukNestedInput
     produk?: ProdukUpdateOneRequiredWithoutPesananProdukNestedInput
   }
@@ -8878,20 +8904,23 @@ export namespace Prisma {
   export type PesananProdukUncheckedUpdateInput = {
     pesananId?: StringFieldUpdateOperationsInput | string
     produkId?: IntFieldUpdateOperationsInput | number
+    jumlahProduk?: IntFieldUpdateOperationsInput | number
   }
 
   export type PesananProdukCreateManyInput = {
     pesananId: string
     produkId: number
+    jumlahProduk?: number
   }
 
   export type PesananProdukUpdateManyMutationInput = {
-
+    jumlahProduk?: IntFieldUpdateOperationsInput | number
   }
 
   export type PesananProdukUncheckedUpdateManyInput = {
     pesananId?: StringFieldUpdateOperationsInput | string
     produkId?: IntFieldUpdateOperationsInput | number
+    jumlahProduk?: IntFieldUpdateOperationsInput | number
   }
 
   export type StringFilter<$PrismaModel = never> = {
@@ -9272,24 +9301,29 @@ export namespace Prisma {
   export type PesananProdukCountOrderByAggregateInput = {
     pesananId?: SortOrder
     produkId?: SortOrder
+    jumlahProduk?: SortOrder
   }
 
   export type PesananProdukAvgOrderByAggregateInput = {
     produkId?: SortOrder
+    jumlahProduk?: SortOrder
   }
 
   export type PesananProdukMaxOrderByAggregateInput = {
     pesananId?: SortOrder
     produkId?: SortOrder
+    jumlahProduk?: SortOrder
   }
 
   export type PesananProdukMinOrderByAggregateInput = {
     pesananId?: SortOrder
     produkId?: SortOrder
+    jumlahProduk?: SortOrder
   }
 
   export type PesananProdukSumOrderByAggregateInput = {
     produkId?: SortOrder
+    jumlahProduk?: SortOrder
   }
 
   export type PembayaranCreateNestedManyWithoutPembeliInput = {
@@ -10116,11 +10150,13 @@ export namespace Prisma {
   }
 
   export type PesananProdukCreateWithoutPesananInput = {
+    jumlahProduk?: number
     produk: ProdukCreateNestedOneWithoutPesananProdukInput
   }
 
   export type PesananProdukUncheckedCreateWithoutPesananInput = {
     produkId: number
+    jumlahProduk?: number
   }
 
   export type PesananProdukCreateOrConnectWithoutPesananInput = {
@@ -10205,6 +10241,7 @@ export namespace Prisma {
     NOT?: PesananProdukScalarWhereInput | PesananProdukScalarWhereInput[]
     pesananId?: StringFilter<"PesananProduk"> | string
     produkId?: IntFilter<"PesananProduk"> | number
+    jumlahProduk?: IntFilter<"PesananProduk"> | number
   }
 
   export type PenjualCreateWithoutProdukInput = {
@@ -10227,11 +10264,13 @@ export namespace Prisma {
   }
 
   export type PesananProdukCreateWithoutProdukInput = {
+    jumlahProduk?: number
     pesanan: PesananCreateNestedOneWithoutPesananProdukInput
   }
 
   export type PesananProdukUncheckedCreateWithoutProdukInput = {
     pesananId: string
+    jumlahProduk?: number
   }
 
   export type PesananProdukCreateOrConnectWithoutProdukInput = {
@@ -10533,34 +10572,42 @@ export namespace Prisma {
 
   export type PesananProdukCreateManyPesananInput = {
     produkId: number
+    jumlahProduk?: number
   }
 
   export type PesananProdukUpdateWithoutPesananInput = {
+    jumlahProduk?: IntFieldUpdateOperationsInput | number
     produk?: ProdukUpdateOneRequiredWithoutPesananProdukNestedInput
   }
 
   export type PesananProdukUncheckedUpdateWithoutPesananInput = {
     produkId?: IntFieldUpdateOperationsInput | number
+    jumlahProduk?: IntFieldUpdateOperationsInput | number
   }
 
   export type PesananProdukUncheckedUpdateManyWithoutPesananInput = {
     produkId?: IntFieldUpdateOperationsInput | number
+    jumlahProduk?: IntFieldUpdateOperationsInput | number
   }
 
   export type PesananProdukCreateManyProdukInput = {
     pesananId: string
+    jumlahProduk?: number
   }
 
   export type PesananProdukUpdateWithoutProdukInput = {
+    jumlahProduk?: IntFieldUpdateOperationsInput | number
     pesanan?: PesananUpdateOneRequiredWithoutPesananProdukNestedInput
   }
 
   export type PesananProdukUncheckedUpdateWithoutProdukInput = {
     pesananId?: StringFieldUpdateOperationsInput | string
+    jumlahProduk?: IntFieldUpdateOperationsInput | number
   }
 
   export type PesananProdukUncheckedUpdateManyWithoutProdukInput = {
     pesananId?: StringFieldUpdateOperationsInput | string
+    jumlahProduk?: IntFieldUpdateOperationsInput | number
   }
 
 

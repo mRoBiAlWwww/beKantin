@@ -204,7 +204,12 @@ app.post("/order", async (req, res) => {
                 penjualId: "aa",
                 pesananProduk: {
                     create: pesananProduk.map((p) => ({
-                        produk: { connect: { id: p.produkId } },
+                        jumlahProduk: p.jumlah,
+                        produk: {
+                            connect: {
+                                id: p.produkId,
+                            },
+                        },
                     })),
                 },
             },

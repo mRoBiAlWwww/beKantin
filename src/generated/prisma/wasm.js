@@ -161,7 +161,8 @@ exports.Prisma.ProdukScalarFieldEnum = {
 
 exports.Prisma.PesananProdukScalarFieldEnum = {
   pesananId: 'pesananId',
-  produkId: 'produkId'
+  produkId: 'produkId',
+  jumlahProduk: 'jumlahProduk'
 };
 
 exports.Prisma.SortOrder = {

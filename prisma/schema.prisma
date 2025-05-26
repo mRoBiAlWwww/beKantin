@@ -68,6 +68,7 @@ model Produk {
 model PesananProduk {
   pesananId String
   produkId  Int
+  jumlahProduk Int @default(1)
 
   pesanan   Pesanan @relation(fields: [pesananId], references: [id])
   produk    Produk  @relation(fields: [produkId], references: [id])

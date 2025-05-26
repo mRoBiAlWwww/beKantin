@@ -56,7 +56,7 @@ model Produk {
   harga         Int
   jenis         String
   stock         Int
-  gambarUrl     String
+  gambarUrl     String?
   penjualId     String
   penjual       Penjual         @relation(fields: [penjualId], references: [id])
   pesananProduk PesananProduk[]
@@ -65,8 +65,9 @@ model Produk {
 }
 
 model PesananProduk {
-  pesananId String
-  produkId  Int
+  pesananId    String
+  produkId     Int
+  jumlahProduk Int    @default(1)
 
   pesanan Pesanan @relation(fields: [pesananId], references: [id])
   produk  Produk  @relation(fields: [produkId], references: [id])
