@@ -4,6 +4,7 @@ const { PrismaClient } = require("./generated/prisma");
 const cors = require("cors");
 const cloudinary = require("./utils/cloudinary");
 const upload = require("./middleware/multer");
+const streamifier = require("streamifier");
 
 dotenv.config();
 const prisma = new PrismaClient();
@@ -112,6 +113,15 @@ app.put("/products/:id", upload.single("image"), async (req, res) => {
 });
 
 //4
+const streamUpload = (fileBuffer) => {
+    return new Promise((resolve, reject) => {
+        const stream = cloudinary.uploader.upload_stream((error, result) => {
+            if (result) resolve(result);
+            else reject(error);
+        });
+        streamifier.createReadStream(fileBuffer).pipe(stream);
+    });
+};
 app.post("/products", upload.single("image"), async (req, res) => {
     const { nama, harga, jenis, stock } = req.body;
 
@@ -119,8 +129,8 @@ app.post("/products", upload.single("image"), async (req, res) => {
         if (!req.file) {
             return res.status(400).json({ error: "No image file uploaded" });
         }
-
-        const result = await cloudinary.uploader.upload(req.file.path);
+        const result = await streamUpload(req.file.buffer);
+        // const result = await cloudinary.uploader.upload(req.file.path);
 
         const product = await prisma.produk.create({
             data: {
