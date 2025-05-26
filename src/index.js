@@ -9,8 +9,7 @@ const streamifier = require("streamifier");
 dotenv.config();
 const prisma = new PrismaClient();
 const app = express();
-
-const PORT = process.env.PORT;
+app.use(express.urlencoded({ extended: true }));
 
 app.use(
     cors({
@@ -18,6 +17,7 @@ app.use(
     })
 );
 app.use(express.json());
+const PORT = process.env.PORT;
 
 //1
 app.get("/products", async (req, res) => {
