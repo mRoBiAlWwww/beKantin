@@ -123,12 +123,18 @@ app.put("/products/:id", upload.single("image"), async (req, res) => {
 const streamUpload = (fileBuffer) => {
     return new Promise((resolve, reject) => {
         const stream = cloudinary.uploader.upload_stream((error, result) => {
-            if (result) resolve(result);
-            else reject(error);
+            if (error) {
+                console.error("❌ Cloudinary stream error:", error); // Tambahkan ini
+                reject(error);
+            } else {
+                resolve(result);
+            }
         });
+
         streamifier.createReadStream(fileBuffer).pipe(stream);
     });
 };
+
 app.post("/products", upload.single("image"), async (req, res) => {
     const { nama, harga, jenis, stock } = req.body;
     console.log("req.file:", req.file);
