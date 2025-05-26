@@ -37,6 +37,7 @@ app.get("/products", async (req, res) => {
         }
         res.json(product);
     } catch (error) {
+        console.log("ujank");
         res.status(500).json({ error: error.message });
     }
 });
