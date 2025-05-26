@@ -11,11 +11,6 @@ const prisma = new PrismaClient();
 const app = express();
 app.use(express.urlencoded({ extended: true }));
 
-app.use((req, res, next) => {
-    console.log(`Incoming ${req.method} request to ${req.url}`);
-    next();
-});
-
 app.use(
     cors({
         origin: "*",
@@ -43,7 +38,6 @@ app.get("/products", async (req, res) => {
         }
         res.json(product);
     } catch (error) {
-        console.log("ujank");
         res.status(500).json({ error: error.message });
     }
 });
@@ -124,7 +118,6 @@ const streamUpload = (fileBuffer) => {
     return new Promise((resolve, reject) => {
         const stream = cloudinary.uploader.upload_stream((error, result) => {
             if (error) {
-                console.error("❌ Cloudinary stream error:", error); // Tambahkan ini
                 reject(error);
             } else {
                 resolve(result);
@@ -137,19 +130,12 @@ const streamUpload = (fileBuffer) => {
 
 app.post("/products", upload.single("image"), async (req, res) => {
     const { nama, harga, jenis, stock } = req.body;
-    console.log("req.file:", req.file);
-    console.log("req.body:", req.body);
 
     try {
         if (!req.file) {
             return res.status(400).json({ error: "No image file uploaded" });
         }
-        console.log("🚀 Mulai upload ke Cloudinary");
-
-        const result = await streamUpload(req.file.buffer); // jika pakai memoryStorage
-
-        console.log("✅ Upload Cloudinary berhasil:", result);
-        // const result = await cloudinary.uploader.upload(req.file.path);
+        const result = await streamUpload(req.file.buffer);
 
         const product = await prisma.produk.create({
             data: {
@@ -164,7 +150,6 @@ app.post("/products", upload.single("image"), async (req, res) => {
 
         res.json({ message: "Berhasil tambah produk", product });
     } catch (error) {
-        console.log("puyenk");
         res.status(500).json({ error: error.message });
     }
 });
