@@ -11,16 +11,17 @@ const prisma = new PrismaClient();
 const app = express();
 app.use(express.urlencoded({ extended: true }));
 
+app.use((req, res, next) => {
+    console.log(`Incoming ${req.method} request to ${req.url}`);
+    next();
+});
+
 app.use(
     cors({
         origin: "*",
     })
 );
 app.use(express.json());
-app.use((req, res, next) => {
-    console.log(`Request masuk: ${req.method} ${req.url}`);
-    next();
-});
 
 const PORT = process.env.PORT;
 
