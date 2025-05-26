@@ -155,8 +155,8 @@ app.post("/products", upload.single("image"), async (req, res) => {
             data: {
                 nama,
                 jenis,
-                harga: 10000,
-                stock: 10,
+                harga: Number(harga),
+                stock: Number(stock),
                 gambarUrl: result.secure_url,
                 penjualId: "aa",
             },
