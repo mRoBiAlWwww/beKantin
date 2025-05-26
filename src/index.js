@@ -145,6 +145,7 @@ app.post("/products", upload.single("image"), async (req, res) => {
 
         res.json({ message: "Berhasil tambah produk", product });
     } catch (error) {
+        console.log("puyenk");
         res.status(500).json({ error: error.message });
     }
 });
