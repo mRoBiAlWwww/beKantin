@@ -20,6 +20,19 @@ app.use(express.json());
 
 const PORT = process.env.PORT;
 
+const streamUpload = (fileBuffer) => {
+    return new Promise((resolve, reject) => {
+        const stream = cloudinary.uploader.upload_stream((error, result) => {
+            if (error) {
+                reject(error);
+            } else {
+                resolve(result);
+            }
+        });
+
+        streamifier.createReadStream(fileBuffer).pipe(stream);
+    });
+};
 //1
 app.get("/products", async (req, res) => {
     try {
@@ -93,15 +106,15 @@ app.put("/products/:id", upload.single("image"), async (req, res) => {
             return res.status(400).json({ error: "No image file uploaded" });
         }
 
-        const result = await cloudinary.uploader.upload(req.file.path);
+        const result = await streamUpload(req.file.buffer);
 
         const product = await prisma.produk.update({
             where: { id: parseInt(productId) },
             data: {
                 nama,
-                harga,
                 jenis,
-                stock,
+                harga: Number(harga),
+                stock: Number(stock),
                 gambarUrl: result.secure_url,
                 penjualId: "aa",
             },
@@ -114,20 +127,6 @@ app.put("/products/:id", upload.single("image"), async (req, res) => {
 });
 
 //4
-const streamUpload = (fileBuffer) => {
-    return new Promise((resolve, reject) => {
-        const stream = cloudinary.uploader.upload_stream((error, result) => {
-            if (error) {
-                reject(error);
-            } else {
-                resolve(result);
-            }
-        });
-
-        streamifier.createReadStream(fileBuffer).pipe(stream);
-    });
-};
-
 app.post("/products", upload.single("image"), async (req, res) => {
     const { nama, harga, jenis, stock } = req.body;
 
