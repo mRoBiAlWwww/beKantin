@@ -125,6 +125,8 @@ const streamUpload = (fileBuffer) => {
 };
 app.post("/products", upload.single("image"), async (req, res) => {
     const { nama, harga, jenis, stock } = req.body;
+    console.log("req.file:", req.file);
+    console.log("req.body:", req.body);
 
     try {
         if (!req.file) {
