@@ -293,7 +293,7 @@ app.get("/order/:userId", async (req, res) => {
         const order = await prisma.pesanan.findFirst({
             where: {
                 pembeliId: userId,
-                // status: false,
+                status: false,
             },
             include: {
                 pesananProduk: {
