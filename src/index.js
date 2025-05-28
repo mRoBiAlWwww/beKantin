@@ -290,7 +290,7 @@ app.patch("/order/:id", async (req, res) => {
 app.get("/order/:userId", async (req, res) => {
     const userId = req.params.userId;
     try {
-        const order = await prisma.pesanan.findFirst({
+        const order = await prisma.pesanan.findMany({
             where: {
                 pembeliId: userId,
                 // status: false,
